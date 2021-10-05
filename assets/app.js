@@ -16,6 +16,8 @@ const $ = require('jquery');
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
 
-$(document).ready(function() {
-    $('[data-toggle="popover"]').popover();
-});
+// $(document).ready(function() {
+//     $('[data-toggle="popover"]').popover();
+// });
+
+import {Popover} from "bootstrap";

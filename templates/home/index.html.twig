@@ -1,7 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
 {% block body %}
+    <div>
+        <ul class="tabs">
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#training">Mes formations</a></li>
+            <li class="active"><a href="#projets">Mes projets</a></li>
+        </ul>
+        <div class="tabs-content">
+            <div class="tab-content active" id="projets"></div>
+            <div class="tab-content" id="training"></div>
+            <div class="tab-content" id="about"></div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        let displayTab = function (a) {
+            let li = a.parentNode
+            let div = a.parentNode.parentNode.parentNode
+            let activeTab = div.querySelector('.tabs-content .active')
+            let target = div.querySelector(a.getAttribute('href'))
+
+            if (li.classList.contains('active')) {
+                return false
+            }
+            let transition = function () {
+                this.classList.remove('fade')
+                this.classList.remove('active')
+                target.classList.add('active')
+                target.classList.add('fade')
+                target.offsetWidth
+                target.classList.add('in')
+                activeTab.removeEventListener('transitionend', transition)
+            }
+            div.querySelector('.tabs .active').classList.remove('active')
+            li.classList.add('active')
+            activeTab.classList.add('fade')
+            activeTab.classList.remove('in')
+            activeTab.addEventListener('transitionend', transition)
+
+        }
+        const tabs = document.querySelectorAll('.tabs a')
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                displayTab(this)
+            })
+        })
+        let reloading = window.location.hash
+        let a = document.querySelector('a[href="' + reloading + '"]')
+        if (a !== null && !(a.parentNode.classList.contains('active'))) {
+            displayTab(a)
+        }
+    </script>
 {% endblock %}
