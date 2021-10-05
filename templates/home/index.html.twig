@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
-
+{% block header %}
+    <div class="header">
+        <div class="btn btn-secondary text-decoration-none"><a class="link" href="{{ path('app_login') }}" >Se connecter</a></div>
+        <div class="btn btn-primary border-secondary text-secondary"><a class="link" href="{{ path('app_register') }}" >Créer un compte</a></div>
+    </div>
+{% endblock %}
 {% block body %}
     <div>
         <ul class="tabs">
