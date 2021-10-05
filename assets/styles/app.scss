@@ -1,2 +1,61 @@
+@import 'variables.scss';
 @import "~bootstrap/scss/bootstrap";
 
+body {
+  background-color: $primary;
+  padding: 20px;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tabs li {
+  float : right;
+  display: block;
+}
+
+.tabs a {
+  display: inline-block;
+  text-decoration: none;
+  color : $font-color;
+  box-shadow: $shadow-tabs;
+  padding: $padding-tabs;
+}
+
+.tabs .active a {
+  background-color: $tab-active;
+}
+
+.tabs:after {
+  display: table;
+  content: ' ';
+  clear: both;
+}
+
+.tabs-content {
+  position: relative;
+  z-index: 2;
+  padding: 16px;
+  background-color: $tab-active;
+  box-shadow: $shadow-tabs;
+  margin-bottom: 16px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fade.in {
+  opacity: 1;
+}
