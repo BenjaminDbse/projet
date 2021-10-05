@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mb-5">Créer un compte</h1>
+    <div class="d-flex justify-content-center">
+        {{ form_start(registrationForm) }}
+        <div class="form-floating mb-3">
+            {{ form_widget(registrationForm.email) }}
+            {{ form_label(registrationForm.email) }}
+        </div>
+        <div class="form-floating mb-3">
+            {{ form_widget(registrationForm.plainPassword) }}
+            {{ form_label(registrationForm.plainPassword) }}
+        </div>
+            {{ form_row(registrationForm.agreeTerms) }}
+            <div class="d-flex p-4 justify-content-center">
+                <button type="submit" class="btn btn-primary text-secondary border-secondary m-2">Créer</button>
+                <a class="btn btn-secondary m-2" href="{{ path('home') }}">Retour</a>
+            </div>
+            {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
